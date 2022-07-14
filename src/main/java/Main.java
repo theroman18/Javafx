@@ -6,9 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class Main extends Application implements EventHandler<ActionEvent> {
+public class Main extends Application {
     Button button;
-    Button button2;
 
     public static void main(String[] args) {
         launch(args);
@@ -18,26 +17,22 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Title of the Window");
         button = new Button("Click me");
-        button.setOnAction(this);
-        button2 = new Button("I'm #2");
-        button2.setOnAction(this);
+        button.setOnAction(e -> {
+            System.out.println("hey now brown cow");
+            System.out.println("this is what dreams are made of");
+        });
+//        button.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                System.out.println("lets go");
+//            }
+//        });
 
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
-        layout.getChildren().add(button2);
-
         Scene scene = new Scene(layout, 300, 150);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    @Override
-    public void handle(ActionEvent event) {
-        if (event.getSource() == button) {
-            System.out.println("oooo yaaaa keep click right here");
-        }
-        if (event.getSource() == button2) {
-            System.out.println("you clicked button 2");
-        }
-    }
 }
