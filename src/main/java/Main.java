@@ -1,13 +1,12 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -23,23 +22,24 @@ public class Main extends Application {
         window = primaryStage;
         window.setTitle("Stage title here");
 
-        HBox topMenu = new HBox();
-        Button buttonA = new Button("File");
-        Button buttonB = new Button("Edit");
-        Button buttonC = new Button("View");
-        topMenu.getChildren().addAll(buttonA, buttonB, buttonC);
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
 
-        VBox leftMenu = new VBox();
-        Button buttonD = new Button("ELNOTS");
-        Button buttonE = new Button("A123A");
-        Button buttonF = new Button("A427C");
-        leftMenu.getChildren().addAll(buttonD, buttonE, buttonF);
+        Label usernameLabel = new Label("Username");
+        GridPane.setConstraints(usernameLabel, 0, 0);
+        TextField nameInput = new TextField("Roman");
+        GridPane.setConstraints(nameInput, 1 , 0);
 
-        BorderPane layout = new BorderPane();
-        layout.setTop(topMenu);
-        layout.setLeft(leftMenu);
+        Label passwordLabel = new Label("Password");
+        GridPane.setConstraints(passwordLabel, 0, 1);
+        TextField passwordInput = new TextField();
+        passwordInput.setPromptText("123@");
+        GridPane.setConstraints(passwordInput, 1, 1);
 
-        Scene scene = new Scene(layout, 300, 250);
+        grid.getChildren().addAll(usernameLabel, nameInput, passwordLabel, passwordInput);
+        Scene scene = new Scene(grid, 300, 200);
         window.setScene(scene);
         window.show();
     }
