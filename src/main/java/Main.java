@@ -22,7 +22,10 @@ public class Main extends Application {
         window.setTitle("Title here");
 
         button = new Button("Click Me");
-        button.setOnAction(eh -> AlertBox.display("Title of Alert Box", "Wow this alert box is awesome)"));
+        button.setOnAction(eh -> {
+            boolean result = ConfirmBox.display("Title of Window", "Are you sure you want to send naked pics to ex?");
+            System.out.println(result);
+        });
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
         Scene scene = new Scene(layout, 300, 250);
